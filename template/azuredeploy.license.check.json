@@ -9,14 +9,14 @@
       }
     },
     "virtualNetworkAddressPrefixes": {
-      "defaultValue": "10.0.0.0/20",
+      "defaultValue": "10.0.0.0/16",
       "type": "string",
       "metadata": {
         "description": "Specifies the address prefixes of the virtual network."
       }
     },
     "aksSubnetAddressPrefix": {
-      "defaultValue": "10.0.0.0/23",
+      "defaultValue": "10.0.0.0/18",
       "type": "string",
       "metadata": {
         "description": "Specifies the address prefix of the subnet hosting the system node pool of the AKS cluster."
@@ -24,21 +24,21 @@
     },
     "applicationGatewaySubnetAddressPrefix": {
       "type": "string",
-      "defaultValue": "10.0.2.0/25",
+      "defaultValue": "10.0.64.0/24",
       "metadata": {
         "description": "Specifies the address prefix of the subnet which contains the Application Gateway."
       }
     },
     "virtualMachineSubnetAddressPrefix": {
       "type": "string",
-      "defaultValue": "10.0.2.128/25",
+      "defaultValue": "10.0.65.0/24",
       "metadata": {
         "description": "Specifies the address prefix of the subnet which contains the virtual machine."
       }
     },
     "netAppFileSubnetAddressPrefix": {
       "type": "string",
-      "defaultValue": "10.0.3.0/25",
+      "defaultValue": "10.0.66.0/24",
       "metadata": {
         "description": "Specifies the NetApp File subnet IP prefix. This prefix must be within vnet IP prefix address space."
       }
@@ -59,7 +59,7 @@
     },
     "aksClusterKubernetesVersion": {
       "type": "string",
-      "defaultValue": "1.21.1",
+      "defaultValue": "1.21.2",
       "metadata": {
         "description": "Specifies the version of Kubernetes specified when creating the managed cluster."
       }
@@ -83,38 +83,38 @@
       }
     },
     "systemNodePoolVirtualMachineSize": {
-      "defaultValue": "Standard_DS5_v2",
+      "defaultValue": "Standard_D4_v4",
       "type": "string",
       "metadata": {
         "description": "Specifies the vm size of nodes in the system node pool."
       }
     },
     "userNodePoolVirtualMachineSize": {
-      "defaultValue": "Standard_DS5_v2",
+      "defaultValue": "Standard_D4_v4",
       "type": "string",
       "metadata": {
         "description": "Specifies the vm size of nodes in the user node pool."
       }
     },
-    "aksClusterPodCidr": {
-      "defaultValue": "10.0.15.0/24",
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the CIDR notation IP range from which to assign pod IPs when kubenet is used."
-      }
-    },
     "aksClusterServiceCidr": {
-      "defaultValue": "10.0.4.0/24",
+      "defaultValue": "10.0.67.0/24",
       "type": "string",
       "metadata": {
         "description": "A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges."
       }
     },
     "aksClusterDnsServiceIP": {
-      "defaultValue": "10.0.4.10",
+      "defaultValue": "10.0.67.10",
       "type": "string",
       "metadata": {
         "description": "Specifies the IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr."
+      }
+    },
+    "aksClusterPodCidr": {
+      "defaultValue": "10.0.128.0/18",
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the CIDR notation IP range from which to assign pod IPs when kubenet is used."
       }
     },
     "aksClusterDockerBridgeCidr": {
@@ -139,21 +139,21 @@
       }
     },
     "userNodePoolAgentCount": {
-      "defaultValue": 2,
+      "defaultValue": 3,
       "type": "int",
       "metadata": {
         "description": "Specifies the number of agents (VMs) to host docker containers in the user node pool. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1."
       }
     },
     "userNodePoolMinCount": {
-      "defaultValue": 1,
+      "defaultValue": 3,
       "type": "int",
       "metadata": {
         "description": "Specifies the minimum number of nodes for auto-scaling for the user node pool."
       }
     },
     "userNodePoolMaxCount": {
-      "defaultValue": 100,
+      "defaultValue": 200,
       "type": "int",
       "metadata": {
         "description": "Specifies the maximum number of nodes for auto-scaling for the user node pool."
@@ -167,7 +167,7 @@
       }
     },
     "netAppServiceLevel": {
-      "defaultValue": "Standard",
+      "defaultValue": "Premium",
       "type": "string",
       "allowedValues": [
         "Premium",
@@ -180,7 +180,7 @@
     },
     "virtualMachineSize": {
       "type": "string",
-      "defaultValue": "Standard_DS3_v2",
+      "defaultValue": "Standard_DS1_v2",
       "metadata": {
         "description": "Specifies the size of the virtual machine."
       }
