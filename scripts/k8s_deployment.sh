@@ -218,7 +218,7 @@ spec:
             path: /sys/fs/cgroup
             type: Directory
       nodeSelector:
-        agentpool: userpool1
+        agentpool: userpool
       containers:
       - image: boomi/molecule:release
         imagePullPolicy: Always
